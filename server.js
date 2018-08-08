@@ -12,11 +12,11 @@ app.use(express.static('public'))
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-// require('./routes/home-routes')(app);
+require('./controller/page-routes.js')(app);
 
-app.get('/', function (req, res) {
-    res.render('home');    
-});
+// app.get('/', function (req, res) {
+//     res.render('home');    
+// });
 
 app.listen(port, (err)=> {
     if (err) {
