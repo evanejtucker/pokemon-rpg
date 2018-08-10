@@ -1,0 +1,11 @@
+body {
+    background-color: lightblue;
+}
+/* pokedex styles */
+/* --------------------------------------------------------------- */
+
+.pokedex-holder {
+    display: block;
+    margin: 0 auto;
+    width: 745px;
+}
