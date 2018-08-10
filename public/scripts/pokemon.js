@@ -15,6 +15,6 @@ $(document).ready(function() {
         console.log(pokemon)
     }
 
-    getPokemon(1);
+    // getPokemon(1);
 
 });

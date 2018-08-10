@@ -11,8 +11,9 @@ module.exports = (app, request)=> {
         }, function(error, response, body) {
             if (!error && response.statusCode === 200) {
                 pokemon = JSON.parse(body);
-                console.log(pokemon.name);
-                res.json(pokemon); 
+                // res.json(pokemon); 
+                res.render('pokedex', {pokemon: pokemon});
+                // console.log(__dirname)
                 console.log('done');
             }
         });

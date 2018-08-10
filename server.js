@@ -6,11 +6,13 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const request = require('request');
+const path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
-app.use(express.static('public'))
+app.use(express.static('public'));
+// app.use(express.static(path.dirname('public')));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
