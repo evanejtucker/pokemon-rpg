@@ -3,6 +3,20 @@ $(document).ready(function() {
 // global Variables
 // -----------------------------------------------------------------------------------
 
+var battleBackgrounds = [
+    {
+        "type": "normal",
+        "url": "/images/forest-background.jpg" 
+    },
+    {
+        "type": "fire",
+        "url": "/images/fire-background.jpg" 
+    },
+    {
+        "type": "flying",
+        "url": "/images/fire-background.jpg" 
+    }
+]
 
 
 // Functions
@@ -17,16 +31,26 @@ $(document).ready(function() {
             console.log(data);
             $('#pokemonVal').val('');
             updateDex(data)
+            findType(data);
         });
     }
 
-    var updateDex = function(pokemonData) {
-        // var poke = $('<img>')
-        // poke.attr('src', pokemonData.sprites.front_default);
-        // poke.addClass('sprite-image')
-        // $('#poke-image').html(poke);
-        $('#sprite-image').attr('src', pokemonData.sprites.front_default)
-        $('#sprite-image').addClass('sprite-image')
+    var updateDex = function(pokeData) {
+        $('#sprite-image').attr('src', pokeData.sprites.front_default)
+        $('#sprite-image').addClass('sprite-image');
+    }
+
+    var findType = function(pokeData) {
+        $('#poke-image').removeClass('basic-background');
+        var type = pokeData.types[0].type.name;
+        console.log(type);
+        for (var i=0; i<battleBackgrounds.length; i++) {
+            if (type === battleBackgrounds[i].type) {
+                $("#poke-image").css("background-image", "url(" + battleBackgrounds[i].url + ")");
+            } else {
+                $("#poke-image").css("background-image", "url('/images/basic-background.jpg')");
+            }
+        }
     }
 
 

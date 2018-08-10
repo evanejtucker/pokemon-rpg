@@ -15,7 +15,8 @@ body {
 
 #poke-image {
     position: absolute;
-    background: #fcfafc;
+    /* background: #fcfafc; */
+    background-size: cover;
     height: 180px;
     width: 267px;
     bottom: 213px;
@@ -40,4 +41,12 @@ body {
     height: 180px;
     display: block;
     margin: 0 auto;
+}
+
+.basic-background {
+    background-image: url('/images/basic-background.jpg');
+}
+
+.forest {
+    background-image: url('/images/forest-background.jpg');
 }
