@@ -5,7 +5,39 @@ body {
 /* --------------------------------------------------------------- */
 
 .pokedex-holder {
+    position: relative;
+    background-image: url('/images/pokedex.gif');
     display: block;
     margin: 0 auto;
     width: 745px;
+    height: 541px;
+}
+
+#poke-image {
+    position: absolute;
+    background: #fcfafc;
+    height: 180px;
+    width: 267px;
+    bottom: 213px;
+    left: 50px;
+    border-radius: 7px;
+    border: 2px solid black;
+}
+
+#poke-data {
+    position: absolute;;
+    background: #15fd00;
+    height: 120px;
+    width: 244px;
+    bottom: 260px;
+    left: 445px;
+    border-radius: 7px;
+    border: 2px solid black;
+}
+
+.sprite-image {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 0 auto;
 }

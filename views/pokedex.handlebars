@@ -2,6 +2,11 @@
 <div class='row'>
     <div class='col'>
         <h1>Pokedex</h1>
+        <hr>
+        <form action="/action_page.php">
+            Pokemon: <input id='pokemonVal' type="text" name="pokemon"><br>
+        <input type="submit" value="Submit" id='pokemonSubmit'>
+</form>
     </div>
     
 </div>
@@ -9,8 +14,9 @@
 <div class='row'>
     <div class='col col-md-12'>
         <div class='pokedex-holder'>
-            <img src='/images/pokedex.gif' id='pokedex'/>
-            <div id='poke-image'></div>
+            <div id='poke-image'>
+                <img src="" id='sprite-image'/>
+            </div>
             <div id='poke-data'></div>
         </div>    
     </div>
