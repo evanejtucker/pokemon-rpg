@@ -34,9 +34,7 @@ var battleBackgrounds = [
     // search pokemon api for specified pokemon
     var searchPokemon = function(searchTerm) {
 
-        $("#poke-image").css("background-image", "url('/images/basic-background.jpg')");
-        $('#sprite-image').attr('src', 'images/loading1.gif');
-        $('#sprite-image').addClass('sprite-image');
+        resetDex();
 
         var pokemon = [];
         var queryUrl = 'https://pokeapi.co/api/v2/pokemon/' + searchTerm + '/';
@@ -84,6 +82,17 @@ var battleBackgrounds = [
         $('#pokeId').text("ID: " + pokeData.id);
         $('#pokeHeight').text("Height: " + pokeData.height);
         $('#pokeWeight').text("Weight: " + pokeData.weight);
+    }
+
+    // sets the pokedex back to its original values
+    var resetDex = function() {
+        $("#poke-image").css("background-image", "url('/images/basic-background.jpg')");
+        $('#sprite-image').attr('src', 'images/loading1.gif');
+        $('#sprite-image').addClass('sprite-image');
+        $('#pokeName').text('');
+        $('#pokeId').text('');
+        $('#pokeHeight').text('');
+        $('#pokeWeight').text('');
     }
 
     var findType = function(pokeData) {

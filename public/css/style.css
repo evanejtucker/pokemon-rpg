@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue;
+    background-color: #E5E4E2;
 }
 
 .pixel-font {
@@ -8,6 +8,26 @@ body {
 
 /* pokedex styles */
 /* --------------------------------------------------------------- */
+#header-row {
+    margin-bottom: 20px;
+    background: black;
+    color: white;
+}
+
+#searchBox {
+    /* margin-top: 20px; */
+    /* float: right; */
+}
+
+#page-title {
+    display: block;
+    /* margin: 0 auto; */
+    font-size: 1.5em;
+}
+
+#title {
+    font-size: 2em;
+}
 
 .pokedex-holder {
     position: relative;
