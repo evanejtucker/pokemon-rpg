@@ -45,6 +45,11 @@ var battleBackgrounds = [
             url: queryUrl,
         }).done(function(data) {
 
+            if (data === undefined) {
+                console.log("no results found");
+                return;
+            }
+
             // object to keep only the data I need
             pokemon = {
                 "name": data.name,
@@ -59,6 +64,12 @@ var battleBackgrounds = [
 
             findType(data);
             updateDex(data)
+        }).fail(function(err){
+            if (err) {
+                console.log('something went wrong');
+                console.log(err);
+                noResults();
+            }
         });
 
         // clear input field
@@ -93,6 +104,11 @@ var battleBackgrounds = [
             }
         }
         
+    }
+
+    var noResults = function() {
+        $('#sprite-image').attr('src', 'images/question-mark.png');
+        $('#pokeName').text('no results found');
     }
 
     // function to get a random index from an array and return the result
