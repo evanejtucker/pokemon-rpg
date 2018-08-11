@@ -25,6 +25,10 @@ var battleBackgrounds = [
     {
         "type": "water",
         "url": "/images/water-background.png" 
+    },
+    {
+        "type": "electric",
+        "url": "/images/electric-background.jpg" 
     }
 
 ]
@@ -97,7 +101,11 @@ var battleBackgrounds = [
 
     // updates the DOM when a pokemon has been searched
     var updateDex = function(pokeData) {
-        $('#sprite-image').attr('src', pokeData.sprites.front_default)
+        image = pokeData.sprites.front_default;
+        if (image == undefined) {
+            image = '/images/question-mark.png'
+        }
+        $('#sprite-image').attr('src', image)
         $('#sprite-image').addClass('sprite-image');
         $('#pokeName').text(pokeData.name);
         $('#pokeId').text("ID: " + pokeData.id);
