@@ -37,25 +37,23 @@ var battleBackgrounds = [
         $.get({
             url: queryUrl,
         }).done(function(data) {
+
             console.log(data);
             $('#pokemonVal').val('');
-            updateDex(data)
+            
             findType(data);
-            var pokeTypes = [];
-            for (i=0; i<data.types.length; i++) {
-                pokeTypes.push(data.types[i].type.name);
-            }
-            // console.log(pokeTypes)
+            updateDex(data)
 
+            // object to keep only the data I need
             var pokemon = {
                 "name": data.name,
                 "id": data.id,
                 "height": data.height,
                 "weight": data.weight,
-                "types": pokeTypes,
+                "types": getTypes(data),
+                "abilities": getAbilities(data)
             }
             console.log(pokemon);
-            getType(pokemon)
         });
     }
 
@@ -66,13 +64,10 @@ var battleBackgrounds = [
 
     var findType = function(pokeData) {
         $('#poke-image').removeClass('basic-background');
-        // var type = pokeData.types[0].type.name;
         var types = [];
         for (var i=0; i<pokeData.types.length; i++) {
-            console.log("type= " + pokeData.types[i].type.name);
             types.push(pokeData.types[i].type.name);
         }
-        console.log(types);
     
         for (var m=0; m<battleBackgrounds.length; m++) {
             // change the poke-image background based on pokemon type
@@ -81,7 +76,7 @@ var battleBackgrounds = [
                 $("#poke-image").css("background-image", "url(" + battleBackgrounds[m].url + ")");
                 return;
             } else {
-                $("#poke-image").css("background-image", "url('/images/normal-background.jpg')");
+                $("#poke-image").css("background-image", "url('/images/type-background.png')");
             }
         }
         
@@ -97,8 +92,29 @@ var battleBackgrounds = [
         } 
     }
 
-    var getType = function(pokemon) {
-        console.log(pokemon.types);
+    // gets the pokemon types from the data, and saves them in an array
+    var getTypes = function(pokeData) {
+        var pokeTypes = [];
+        for (i=0; i<pokeData.types.length; i++) {
+            var type = {
+                "type": pokeData.types[i].type.name,
+                "url": pokeData.types[i].type.url
+            }
+            pokeTypes.push(type);
+        }
+        return pokeTypes;
+    }
+
+    var getAbilities = function(pokeData) {
+        var pokeAbilities = [];
+        for (var i=0; i<pokeData.abilities.length; i++) {
+            var ability = {
+                "ability": pokeData.abilities[i].ability.name,
+                "url": pokeData.abilities[i].ability.url
+            }
+            pokeAbilities.push(ability);
+        }
+        return pokeAbilities;
     }
     
 
