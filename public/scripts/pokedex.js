@@ -32,20 +32,21 @@ var battleBackgrounds = [
 // -----------------------------------------------------------------------------------
 
     // search pokemon api for specified pokemon
-    var searchPokemon = function(pokemon) {
-        var queryUrl = 'https://pokeapi.co/api/v2/pokemon/' + pokemon + '/';
+    var searchPokemon = function(searchTerm) {
+
+        $("#poke-image").css("background-image", "url('/images/basic-background.jpg')");
+        $('#sprite-image').attr('src', 'images/loading1.gif');
+        $('#sprite-image').addClass('sprite-image');
+
+        var pokemon = [];
+        var queryUrl = 'https://pokeapi.co/api/v2/pokemon/' + searchTerm + '/';
+
         $.get({
             url: queryUrl,
         }).done(function(data) {
 
-            console.log(data);
-            $('#pokemonVal').val('');
-            
-            findType(data);
-            updateDex(data)
-
             // object to keep only the data I need
-            var pokemon = {
+            pokemon = {
                 "name": data.name,
                 "id": data.id,
                 "height": data.height,
@@ -53,13 +54,21 @@ var battleBackgrounds = [
                 "types": getTypes(data),
                 "abilities": getAbilities(data)
             }
+            console.log(data);
             console.log(pokemon);
+
+            findType(data);
+            updateDex(data)
         });
+
+        // clear input field
+        $('#pokemonVal').val('');
     }
 
     var updateDex = function(pokeData) {
         $('#sprite-image').attr('src', pokeData.sprites.front_default)
         $('#sprite-image').addClass('sprite-image');
+        $('#pokeName').text(pokeData.name)
     }
 
     var findType = function(pokeData) {
