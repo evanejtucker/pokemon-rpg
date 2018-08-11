@@ -81,7 +81,8 @@ var battleBackgrounds = [
             console.log(pokemon);
 
             findType(data);
-            updateDex(data)
+            updateDex(data);
+            $("#pokemonVal").removeAttr('list');
         }).fail(function(err){
             if (err) {
                 console.log('something went wrong');
@@ -188,12 +189,10 @@ var battleBackgrounds = [
     // add the data list after the user has types a few letters
     var addDataList = function() {
         var searchTerm = $("#pokemonVal").val();
-        console.log(searchTerm.length);
         if(searchTerm.length>2) {
-            console.log('bigger than 2');
             $("#pokemonVal").attr('list', "pokeList");
-        } else if (searchTerm<2) {
-            $("#pokemonVal").removeAttr('list');
+        } else if(searchTerm.length<2) {
+            $("#pokemonVal").removeAttr('list');   
         }
     }
     
