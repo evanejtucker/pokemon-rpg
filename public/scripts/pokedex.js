@@ -65,10 +65,14 @@ var battleBackgrounds = [
         $('#pokemonVal').val('');
     }
 
+    // updates the DOM when a pokemon has been searched
     var updateDex = function(pokeData) {
         $('#sprite-image').attr('src', pokeData.sprites.front_default)
         $('#sprite-image').addClass('sprite-image');
-        $('#pokeName').text(pokeData.name)
+        $('#pokeName').text(pokeData.name);
+        $('#pokeId').text("ID: " + pokeData.id);
+        $('#pokeHeight').text("Height: " + pokeData.height);
+        $('#pokeWeight').text("Weight: " + pokeData.weight);
     }
 
     var findType = function(pokeData) {
