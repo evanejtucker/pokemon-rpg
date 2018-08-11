@@ -4,10 +4,10 @@
         <h1 id='title'><span><img src='images/pokeball-symbol.png' height='50px' width='50px'/></span>Pokedex</h1>
     </div>
     <div class='col col-md-5 align-self-center' id='searchBox'>
-        <form action="/action_page.php">
-            Pokemon: <input id='pokemonVal' type="text" name="pokemon" placeholder="enter pokemon or id">
-            <input type="submit" value="Submit" id='pokemonSubmit'>
-        </form>
+        Pokemon or ID: <input id='pokemonVal' type="text" name="pokeList">
+        <datalist id="pokeList">
+        </datalist>
+        <input type="submit" value="Submit" id='pokemonSubmit'>
     </div>
 </div>
 

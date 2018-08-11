@@ -3,6 +3,8 @@ $(document).ready(function() {
 // global Variables
 // -----------------------------------------------------------------------------------
 
+var allPokemon = [];
+
 var battleBackgrounds = [
     {
         "type": "normal",
@@ -30,6 +32,24 @@ var battleBackgrounds = [
 
 // Functions
 // -----------------------------------------------------------------------------------
+
+    var getAllPokemon = function() {
+        $.get({
+            url: 'https://pokeapi.co/api/v2/pokemon/?limit=949',
+        }).done(function(data) {
+            console.log(data);
+            allPokemon = [];
+            for (var i =0; i<data.results.length; i++) {
+                var poke = data.results[i].name;
+                allPokemon.push(poke);
+            }
+            dataListOption(allPokemon)
+        }).fail(function(err){
+            if (err) {
+                console.log('something went wrong');
+            }
+        });
+    }
 
     // search pokemon api for specified pokemon
     var searchPokemon = function(searchTerm) {
@@ -154,16 +174,46 @@ var battleBackgrounds = [
         }
         return pokeAbilities;
     }
+
+    var dataListOption = function(list) {
+        for (var i=0; i<list.length; i++) {
+            var option = $('<option>');
+            option.attr('value', list[i]);
+            option.text(list[i]);
+            option.addClass('hiddenOptions')
+            $('#pokeList').append(option);
+        }
+    }
+
+    // add the data list after the user has types a few letters
+    var addDataList = function() {
+        var searchTerm = $("#pokemonVal").val();
+        console.log(searchTerm.length);
+        if(searchTerm.length>2) {
+            console.log('bigger than 2');
+            $("#pokemonVal").attr('list', "pokeList");
+        } else if (searchTerm<2) {
+            $("#pokemonVal").removeAttr('list');
+        }
+    }
     
 
 // Main Process
 // -----------------------------------------------------------------------------------
     
+    // puts every pokemon name in a list to be used for the input dataList
+    getAllPokemon();
+    
+
     $('#pokemonSubmit').on('click', function() {
         event.preventDefault();
         var name = $('#pokemonVal').val();
         console.log(name);
         searchPokemon(name);
+    });
+
+    $("#pokemonVal").keyup(function(event) {
+        addDataList();
     });
 
 });

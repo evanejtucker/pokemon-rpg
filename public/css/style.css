@@ -8,20 +8,19 @@ body {
 
 /* pokedex styles */
 /* --------------------------------------------------------------- */
+
+.hiddenOptions {
+    color: red;
+}
+
 #header-row {
     margin-bottom: 20px;
     background: black;
     color: white;
 }
 
-#searchBox {
-    /* margin-top: 20px; */
-    /* float: right; */
-}
-
 #page-title {
     display: block;
-    /* margin: 0 auto; */
     font-size: 1.5em;
 }
 
