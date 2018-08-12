@@ -5,6 +5,6 @@ module.exports = (app)=> {
     });
 
     app.get('/pokedex', (req, res, next)=> {
-        res.render('pokedex');
+        res.render('pokedex',  {name: 'Evan'});
     });
 };

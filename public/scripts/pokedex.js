@@ -125,8 +125,7 @@ var battleBackgrounds = [
         $('#pokeId').text('');
         $('#pokeHeight').text('');
         $('#pokeWeight').text('');
-        // $(".poke-type").html("<img id='loading-type' src='images/pokedex-backgrounds/loading3.gif/>'")
-        $(".poke-type").html("<img class='loading-type' src='images/pokedex-backgrounds/loading3.gif'/>")
+        $(".poke-type").html("<img class='loading-type' src='images/pokedex-backgrounds/loading4.gif'/>")
 
     }
 
@@ -240,7 +239,6 @@ var battleBackgrounds = [
     // puts every pokemon name in a list to be used for the input dataList
     getAllPokemon();
     
-
     $('#pokemonSubmit').on('click', function() {
         event.preventDefault();
         var name = $('#pokemonVal').val();

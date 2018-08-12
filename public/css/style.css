@@ -71,33 +71,29 @@ body {
     border: 2px solid black;
 }
 
-#poke-type1 {
+.poke-type {
     background:#fb9b05;
     position: absolute;
     bottom: 41px;
-    left: 452px;
     height: 47px;
     width: 105px;
     border-radius: 5px;
     border: 1px solid black;
+}
+
+#poke-type1 {
+    left: 452px;
 }
 
 #poke-type2 {
-    background:#fb9b05;
-    position: absolute;
-    bottom: 41px;
     left: 579px;
-    height: 47px;
-    width: 105px;
-    border-radius: 5px;
-    border: 1px solid black;
 }
 
 .loading-type {
-    height: 50px;
-    width: 50px;
-    margin-left: 25px;
-    /* margin-top: 10px; */
+    height: 30px;
+    width: 30px;
+    margin-left: 38.5px;
+    margin-top: 6.5px;
 }
 
 .cycle-btn {
@@ -123,10 +119,10 @@ body {
 }
 
 .type-symbol {
-    width: 105px;
-    height: 47px;
+    width: 103px;
+    height: 45px;
+    border: 1px solid white;
 }
-
 
 .sprite-image {
     width: 180px;
