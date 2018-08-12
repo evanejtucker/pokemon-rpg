@@ -50,7 +50,7 @@
 }
 
 #poke-data {
-    position: absolute;;
+    position: absolute;
     background: #15fd00;
     height: 120px;
     width: 244px;
@@ -58,6 +58,7 @@
     left: 445px;
     border-radius: 7px;
     border: 2px solid black;
+    overflow: scroll;
 }
 
 #poke-info {

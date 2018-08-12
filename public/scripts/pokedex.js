@@ -95,16 +95,24 @@ var battleBackgrounds = [
 
     // calls the search pokemon function for the previous or next pokemon in the list
     // bazed on ID
-    var cyclePokemon = function(direction, pokemon) {
-        if(pokemon===undefined) {
-            return console.log("something went wrong")
+    var cyclePokemon = function(incrementVal, pokemon) {
+        // console.log(incrementVal, pokemon.id);
+        var newId;
+        if (incrementVal===-1) {
+            if(pokemon===undefined || newId  === 1 ) {
+                newId = 800;
+            } else {
+                newId = pokemon.id + incrementVal;
+            }
         }
-        var newId = pokemon.id;
-        if(direction==='next') {
-            newId+=1;
-        } else {
-            newId-=1;
+        else if (incrementVal===1) {
+            if(pokemon===undefined || newId  === 800 ) {
+                newId = 1;
+            } else {
+                newId = pokemon.id + incrementVal;
+            }
         }
+
         searchPokemon(newId);
     }
 
@@ -256,8 +264,8 @@ var battleBackgrounds = [
 
     // cycel button click
     $(".cycle-btn").click(function() {
-        var direction = $(this).attr('direction');
-        cyclePokemon(direction, pokemon);
+        var incrementVal = parseInt($(this).attr('cycle'));
+        cyclePokemon(incrementVal, pokemon);
     });
 
     // when user types in put box, add datalist

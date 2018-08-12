@@ -5,3 +5,7 @@ body {
 .pixel-font {
     font-family: 'Press Start 2P', cursive;
 }
+
+::-webkit-scrollbar { 
+    display: none; 
+}
