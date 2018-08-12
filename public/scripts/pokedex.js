@@ -3,32 +3,35 @@ $(document).ready(function() {
 // global Variables
 // -----------------------------------------------------------------------------------
 
+// pokemon object
+var pokemon;
+
 var allPokemon = [];
 
 var battleBackgrounds = [
     {
         "type": "normal",
-        "url": "/images/normal-background.png" 
+        "url": "/images/pokedex-backgrounds/normal-background.png" 
     },
     {
         "type": "fire",
-        "url": "/images/fire-background.png" 
+        "url": "/images/pokedex-backgrounds/fire-background.png" 
     },
     {
         "type": "flying",
-        "url": "/images/flying-background.png" 
+        "url": "/images/pokedex-backgrounds/flying-background.png" 
     },
     {
         "type": "grass",
-        "url": "/images/forest-background.jpg" 
+        "url": "/images/pokedex-backgrounds/forest-background.jpg" 
     },
     {
         "type": "water",
-        "url": "/images/water-background.png" 
+        "url": "/images/pokedex-backgrounds/water-background.png" 
     },
     {
         "type": "electric",
-        "url": "/images/electric-background.jpg" 
+        "url": "/images/pokedex-backgrounds/electric-background.jpg" 
     }
 
 ]
@@ -59,8 +62,6 @@ var battleBackgrounds = [
     var searchPokemon = function(searchTerm) {
 
         resetDex();
-
-        var pokemon = [];
         var queryUrl = 'https://pokeapi.co/api/v2/pokemon/' + searchTerm + '/';
 
         $.get({
@@ -86,6 +87,8 @@ var battleBackgrounds = [
 
             findType(data);
             updateDex(data);
+            updateDexTypes(pokemon);
+            // gets rid of the inputs datalist after the search
             $("#pokemonVal").removeAttr('list');
         }).fail(function(err){
             if (err) {
@@ -103,7 +106,7 @@ var battleBackgrounds = [
     var updateDex = function(pokeData) {
         image = pokeData.sprites.front_default;
         if (image == undefined) {
-            image = '/images/question-mark.png'
+            image = '/images/pokedex-backgrounds/question-mark.png'
         }
         $('#sprite-image').attr('src', image)
         $('#sprite-image').addClass('sprite-image');
@@ -115,8 +118,8 @@ var battleBackgrounds = [
 
     // sets the pokedex back to its original values
     var resetDex = function() {
-        $("#poke-image").css("background-image", "url('/images/basic-background.jpg')");
-        $('#sprite-image').attr('src', 'images/loading1.gif');
+        $("#poke-image").css("background-image", "url('/images/pokedex-backgrounds/basic-background.jpg')");
+        $('#sprite-image').attr('src', 'images/pokedex-backgrounds/loading1.gif');
         $('#sprite-image').addClass('sprite-image');
         $('#pokeName').text('');
         $('#pokeId').text('');
@@ -138,14 +141,15 @@ var battleBackgrounds = [
                 $("#poke-image").css("background-image", "url(" + battleBackgrounds[m].url + ")");
                 return;
             } else {
-                $("#poke-image").css("background-image", "url('/images/type-background.png')");
+                $("#poke-image").css("background-image", "url('/images/pokedex-backgrounds/type-background.png')");
             }
         }
         
     }
 
+    // set the pokedex info when no search results are found
     var noResults = function() {
-        $('#sprite-image').attr('src', 'images/question-mark.png');
+        $('#sprite-image').attr('src', 'images/pokedex-backgrounds/question-mark.png');
         $('#pokeName').text('no results found');
     }
 
@@ -172,6 +176,26 @@ var battleBackgrounds = [
         return pokeTypes;
     }
 
+    // will update the dom with the pokemon type images
+    // pokeObject is the pokemon object created from the 
+    var updateDexTypes = function(pokeObject) {
+
+        $('#poke-type1').html('');
+        $('#poke-type2').html('');
+        
+        for (var i=0; i<pokeObject.types.length; i++) {
+            var typeHolder = '#poke-type' + (i+1);
+            var typeImage = $('<img>');
+            typeImage.attr('src', "images/type-symbols/" + pokeObject.types[i].type + "-type.png");
+            typeImage.attr('alt', pokeObject.types[i].type);
+            typeImage.addClass('type-symbol');
+            console.log(typeImage);
+            $(typeHolder).append(typeImage);
+        }
+
+    }
+
+    // get the pokemons abilities and url links from the data object
     var getAbilities = function(pokeData) {
         var pokeAbilities = [];
         for (var i=0; i<pokeData.abilities.length; i++) {
@@ -184,6 +208,7 @@ var battleBackgrounds = [
         return pokeAbilities;
     }
 
+    // sets input datalist options from the list of pokemon
     var dataListOption = function(list) {
         for (var i=0; i<list.length; i++) {
             var option = $('<option>');
@@ -197,9 +222,9 @@ var battleBackgrounds = [
     // add the data list after the user has types a few letters
     var addDataList = function() {
         var searchTerm = $("#pokemonVal").val();
-        if(searchTerm.length>2) {
+        if(searchTerm.length>1) {
             $("#pokemonVal").attr('list', "pokeList");
-        } else if(searchTerm.length<2) {
+        } else if(searchTerm.length<1) {
             $("#pokemonVal").removeAttr('list');   
         }
     }

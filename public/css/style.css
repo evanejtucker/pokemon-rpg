@@ -39,8 +39,7 @@ body {
 
 #poke-image {
     position: absolute;
-    /* background: #fcfafc; */
-    background-image: url('/images/basic-background.jpg');
+    background-image: url('/images/pokedex-backgrounds/basic-background.jpg');
     background-size: cover;
     height: 180px;
     width: 267px;
@@ -60,6 +59,45 @@ body {
     border-radius: 7px;
     border: 2px solid black;
 }
+
+#poke-info {
+    background:#fbfb05;
+    position: absolute;
+    bottom: 38px;
+    left: 88px;
+    height: 58px;
+    width: 122px;
+    border-radius: 7px;
+    border: 2px solid black;
+}
+
+#poke-type1 {
+    background:#fb9b05;
+    position: absolute;
+    bottom: 41px;
+    left: 452px;
+    height: 47px;
+    width: 105px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#poke-type2 {
+    background:#fb9b05;
+    position: absolute;
+    bottom: 41px;
+    left: 579px;
+    height: 47px;
+    width: 105px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.type-symbol {
+    width: 105px;
+    height: 47px;
+}
+
 
 .sprite-image {
     width: 180px;
