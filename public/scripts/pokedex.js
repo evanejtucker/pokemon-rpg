@@ -58,21 +58,13 @@ var battleBackgrounds = [
         });
     }
 
-    // search pokemon api for specified pokemon
+    // search pokemon api for specified pokemon, and updates the pokedex
     var searchPokemon = function(searchTerm) {
-
         resetDex();
         var queryUrl = 'https://pokeapi.co/api/v2/pokemon/' + searchTerm + '/';
-
         $.get({
             url: queryUrl,
         }).done(function(data) {
-
-            if (data === undefined) {
-                console.log("no results found");
-                return;
-            }
-
             // object to keep only the data I need
             pokemon = {
                 "name": data.name,
@@ -82,12 +74,12 @@ var battleBackgrounds = [
                 "types": getTypes(data),
                 "abilities": getAbilities(data)
             }
-            console.log(data);
-            console.log(pokemon);
-
+            console.log("data: " + data);
+            console.log("New Object: " + pokemon);
+            updateDexTypes(pokemon);
+            // eventually I will get these to work with the new object
             findType(data);
             updateDex(data);
-            updateDexTypes(pokemon);
             // gets rid of the inputs datalist after the search
             $("#pokemonVal").removeAttr('list');
         }).fail(function(err){
@@ -97,9 +89,23 @@ var battleBackgrounds = [
                 noResults();
             }
         });
-
         // clear input field
         $('#pokemonVal').val('');
+    }
+
+    // calls the search pokemon function for the previous or next pokemon in the list
+    // bazed on ID
+    var cyclePokemon = function(direction, pokemon) {
+        if(pokemon===undefined) {
+            return console.log("something went wrong")
+        }
+        var newId = pokemon.id;
+        if(direction==='next') {
+            newId+=1;
+        } else {
+            newId-=1;
+        }
+        searchPokemon(newId);
     }
 
     // updates the DOM when a pokemon has been searched
@@ -118,15 +124,17 @@ var battleBackgrounds = [
 
     // sets the pokedex back to its original values
     var resetDex = function() {
+        // reset background back to its original
         $("#poke-image").css("background-image", "url('/images/pokedex-backgrounds/basic-background.jpg')");
+        // add loading gifs and classes
         $('#sprite-image').attr('src', 'images/pokedex-backgrounds/loading1.gif');
         $('#sprite-image').addClass('sprite-image');
+        $(".poke-type").html("<img class='loading-type' src='images/pokedex-backgrounds/loading6.gif'/>");
+        // clear pokemon data
         $('#pokeName').text('');
         $('#pokeId').text('');
         $('#pokeHeight').text('');
         $('#pokeWeight').text('');
-        $(".poke-type").html("<img class='loading-type' src='images/pokedex-backgrounds/loading4.gif'/>")
-
     }
 
     var findType = function(pokeData) {
@@ -192,7 +200,6 @@ var battleBackgrounds = [
             typeImage.attr('src', "images/type-symbols/" + pokeObject.types[i].type + "-type.png");
             typeImage.attr('alt', pokeObject.types[i].type);
             typeImage.addClass('type-symbol');
-            console.log(typeImage);
             $(typeHolder).append(typeImage);
         }
 
@@ -239,6 +246,7 @@ var battleBackgrounds = [
     // puts every pokemon name in a list to be used for the input dataList
     getAllPokemon();
     
+    // sumbit button click
     $('#pokemonSubmit').on('click', function() {
         event.preventDefault();
         var name = $('#pokemonVal').val();
@@ -246,6 +254,13 @@ var battleBackgrounds = [
         searchPokemon(name);
     });
 
+    // cycel button click
+    $(".cycle-btn").click(function() {
+        var direction = $(this).attr('direction');
+        cyclePokemon(direction, pokemon);
+    });
+
+    // when user types in put box, add datalist
     $("#pokemonVal").keyup(function(event) {
         addDataList();
     });

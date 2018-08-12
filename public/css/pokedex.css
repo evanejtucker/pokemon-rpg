@@ -1,10 +1,10 @@
-body {
+/* body {
     background-color: #E5E4E2;
 }
 
 .pixel-font {
     font-family: 'Press Start 2P', cursive;
-}
+} */
 
 /* pokedex styles */
 /* --------------------------------------------------------------- */
@@ -141,4 +141,10 @@ body {
 .dex-info {
     font-size: 10px;
     margin-left: 10px;
+}
+
+@media (max-width: 375px) {
+    .pokedex-holder {
+        display: none;
+    }
 }
