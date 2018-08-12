@@ -93,6 +93,35 @@ body {
     border: 1px solid black;
 }
 
+.loading-type {
+    height: 50px;
+    width: 50px;
+    margin-left: 25px;
+    /* margin-top: 10px; */
+}
+
+.cycle-btn {
+    position: absolute;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 30px;
+    width: 35px;
+}
+
+.cycle-btn:hover {
+    border: 3px solid red;
+}
+
+#prev-btn {
+    bottom: 117px;
+    left: 471px;    
+}
+
+#next-btn {
+    bottom: 117px;
+    left: 505px; 
+}
+
 .type-symbol {
     width: 105px;
     height: 47px;

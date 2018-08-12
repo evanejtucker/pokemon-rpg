@@ -125,6 +125,9 @@ var battleBackgrounds = [
         $('#pokeId').text('');
         $('#pokeHeight').text('');
         $('#pokeWeight').text('');
+        // $(".poke-type").html("<img id='loading-type' src='images/pokedex-backgrounds/loading3.gif/>'")
+        $(".poke-type").html("<img class='loading-type' src='images/pokedex-backgrounds/loading3.gif'/>")
+
     }
 
     var findType = function(pokeData) {
@@ -185,6 +188,7 @@ var battleBackgrounds = [
         
         for (var i=0; i<pokeObject.types.length; i++) {
             var typeHolder = '#poke-type' + (i+1);
+            $(typeHolder).empty();
             var typeImage = $('<img>');
             typeImage.attr('src', "images/type-symbols/" + pokeObject.types[i].type + "-type.png");
             typeImage.attr('alt', pokeObject.types[i].type);
