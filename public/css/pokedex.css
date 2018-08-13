@@ -1,25 +1,16 @@
 
 /* pokedex styles */
 /* --------------------------------------------------------------- */
+.flip-screen {
+    display: none;
+    position: relative;
+    margin: 0 auto;
+}
 
 .hiddenOptions {
     color: red;
 }
 
-/* #header-row {
-    margin-bottom: 20px;
-    background: black;
-    color: white;
-} */
-
-/* #page-title {
-    display: block;
-    font-size: 1.5em;
-}
-
-#title {
-    font-size: 2em;
-} */
 #pokedex-row {
     margin-top: 30px;
 }
@@ -156,7 +147,11 @@
 }
 
 @media (max-width: 375px) {
-    .pokedex {
+    #pokedex-row {
         display: none;
+    }
+
+    .flip-screen {
+        display: block;
     }
 }
