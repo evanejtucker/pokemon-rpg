@@ -3,38 +3,39 @@ $(document).ready(function() {
 // global Variables
 // -----------------------------------------------------------------------------------
 
-// pokemon object
-var pokemon;
+    // pokemon object
+    var pokemon;
 
-var allPokemon = [];
+    // holds the list of all pokemon names in the api
+    var allPokemon = [];
 
-var battleBackgrounds = [
-    {
-        "type": "normal",
-        "url": "/images/pokedex-backgrounds/normal-background.png" 
-    },
-    {
-        "type": "fire",
-        "url": "/images/pokedex-backgrounds/fire-background.png" 
-    },
-    {
-        "type": "flying",
-        "url": "/images/pokedex-backgrounds/flying-background.png" 
-    },
-    {
-        "type": "grass",
-        "url": "/images/pokedex-backgrounds/forest-background.jpg" 
-    },
-    {
-        "type": "water",
-        "url": "/images/pokedex-backgrounds/water-background.png" 
-    },
-    {
-        "type": "electric",
-        "url": "/images/pokedex-backgrounds/electric-background.jpg" 
-    }
-
-]
+    // array containg the different pokedex screen backgrounds with their corresponding type
+    var battleBackgrounds = [
+        {
+            "type": "normal",
+            "url": "/images/pokedex-backgrounds/normal-background.png" 
+        },
+        {
+            "type": "fire",
+            "url": "/images/pokedex-backgrounds/fire-background.png" 
+        },
+        {
+            "type": "flying",
+            "url": "/images/pokedex-backgrounds/flying-background.png" 
+        },
+        {
+            "type": "grass",
+            "url": "/images/pokedex-backgrounds/forest-background.jpg" 
+        },
+        {
+            "type": "water",
+            "url": "/images/pokedex-backgrounds/water-background.png" 
+        },
+        {
+            "type": "electric",
+            "url": "/images/pokedex-backgrounds/electric-background.jpg" 
+        }
+    ]
 
 
 // Functions
@@ -145,6 +146,7 @@ var battleBackgrounds = [
         $('#pokeWeight').text('');
     }
 
+    // finds the type of pokemon searched, and updates the background accordinly
     var findType = function(pokeData) {
         $('#poke-image').removeClass('basic-background');
         var types = [];
@@ -262,7 +264,7 @@ var battleBackgrounds = [
         searchPokemon(name);
     });
 
-    // cycel button click
+    // cycle button click
     $(".cycle-btn").click(function() {
         var incrementVal = parseInt($(this).attr('cycle'));
         cyclePokemon(incrementVal, pokemon);
@@ -273,4 +275,8 @@ var battleBackgrounds = [
         addDataList();
     });
 
+
+
+// $(document).ready closing tag
 });
+// -----------------------------
