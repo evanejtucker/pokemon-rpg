@@ -100,13 +100,13 @@ var battleBackgrounds = [
         var newId;
         if (incrementVal===-1) {
             if(pokemon===undefined || newId  === 1 ) {
-                newId = 800;
+                newId = 802;
             } else {
                 newId = pokemon.id + incrementVal;
             }
         }
         else if (incrementVal===1) {
-            if(pokemon===undefined || newId  === 800 ) {
+            if(pokemon===undefined || newId  === 802 ) {
                 newId = 1;
             } else {
                 newId = pokemon.id + incrementVal;

@@ -1,3 +1,9 @@
+
+/* hides scrollbar's */
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 body {
     background-color: #E5E4E2;
 }
@@ -6,6 +12,18 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
-::-webkit-scrollbar { 
-    display: none; 
+#nav-title {
+    font-size: 1.4em;
+}
+
+#navbar {
+    /* background: #F75D39; */
+    background: #385aa6;
+    border-bottom: 5px solid black;
+}
+
+#navbar a {
+    /* color: white; */
+    color: #f9cd06;
+    text-decoration: bold;
 }
