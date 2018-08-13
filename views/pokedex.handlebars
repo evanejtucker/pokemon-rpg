@@ -1,33 +1,36 @@
 
-<div class='row' id='header-row' style='margin-top: 50px;'>
-    <div class='col' id='page-title'>
-        <h1 id='title'><span><img src='images/pokeball-symbol.png' height='50px' width='50px'/></span>Pokedex</h1>
-    </div>
-    <div class='col col-md-5 align-self-center' id='searchBox'>
-        Pokemon or ID: <input id='pokemonVal' type="text" name="pokeList">
-        <datalist id="pokeList">
-        </datalist>
-        <input type="submit" value="Submit" id='pokemonSubmit'>
-    </div>
-</div>
-
-<div class='row'>
-    <div class='col col-md-12'>
-        <div class='pokedex-holder pixel-font'>
-            <div id='poke-image'>
-                <img src="" id='sprite-image'/>
+<div class='row' id='pokedex-row'>
+    {{!-- pokedex col --}}
+    <div class='col'>
+        <div class='pokedex'>
+            <div class='searchBar'>
+                <div id='searchBox'>
+                    Pokemon or ID:
+                    <input id='pokemonVal' type="text" name="pokeList">
+                    <datalist id="pokeList"></datalist>
+                    <input type="submit" value="Submit" id='pokemonSubmit'>
+                </div>
             </div>
-            <div id='poke-data'>
-                <p id='pokeName'></p>
-                <p class='dex-info' id='pokeId'></p>
-                <p class='dex-info' id='pokeHeight'></p>
-                <p class='dex-info' id='pokeWeight'></p>
+            <div class='pokedex-holder pixel-font'>    
+                <div id='poke-image'>
+                    <img src="" id='sprite-image'/>
+                </div>
+                <div id='poke-data'>
+                    <p id='pokeName'></p>
+                    <p class='dex-info' id='pokeId'></p>
+                    <p class='dex-info' id='pokeHeight'></p>
+                    <p class='dex-info' id='pokeWeight'></p>
+                </div>
+                <div id='poke-info'></div>
+                <div class='poke-type' id='poke-type1'></div>
+                <div class='poke-type' id='poke-type2'></div>
+                <div class='cycle-btn' id='prev-btn' cycle='-1' direction='prev'></div>
+                <div class='cycle-btn' id='next-btn' cycle='1' direction='next'></div>
             </div>
-            <div id='poke-info'></div>
-            <div class='poke-type' id='poke-type1'></div>
-            <div class='poke-type' id='poke-type2'></div>
-            <div class='cycle-btn' id='prev-btn' cycle='-1' direction='prev'></div>
-            <div class='cycle-btn' id='next-btn' cycle='1' direction='next'></div>
         </div>    
+    </div>
+    {{!-- info col --}}
+    <div class='col'>
+        <p>there should be text on the left of the pokedex now, lets hope this works</p>
     </div>
 </div>

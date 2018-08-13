@@ -6,28 +6,46 @@
     color: red;
 }
 
-#header-row {
+/* #header-row {
     margin-bottom: 20px;
     background: black;
     color: white;
-}
+} */
 
-#page-title {
+/* #page-title {
     display: block;
     font-size: 1.5em;
 }
 
 #title {
     font-size: 2em;
+} */
+#pokedex-row {
+    margin-top: 30px;
+}
+
+.searchBar {
+    background: black;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.pokedex {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 748px;
+    /* border: 3px solid black; */
 }
 
 .pokedex-holder {
-    position: relative;
     background-image: url('/images/pokedex.gif');
-    display: block;
-    margin: 0 auto;
     width: 745px;
     height: 541px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
 }
 
 #poke-image {
@@ -138,7 +156,7 @@
 }
 
 @media (max-width: 375px) {
-    .pokedex-holder {
+    .pokedex {
         display: none;
     }
 }

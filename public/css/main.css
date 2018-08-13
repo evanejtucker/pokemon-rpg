@@ -17,13 +17,17 @@ body {
 }
 
 #navbar {
-    /* background: #F75D39; */
     background: #385aa6;
     border-bottom: 5px solid black;
 }
 
 #navbar a {
-    /* color: white; */
     color: #f9cd06;
     text-decoration: bold;
+}
+
+#nav-collapse-btn {
+    color: #f9cd06;
+    border: none;
+    font-size: 1.3em;
 }
